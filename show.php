@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION['role']  != 'admin') {
+    echo("anda bukan admin: ");
+    header('Location:index.php');
+}
+
 if (isset($_GET)) {
     if (isset($_GET['alert'])) {
         $pesan = $_GET['alert'];
@@ -51,6 +57,7 @@ if (isset($_GET)) {
             <?php } ?>
         </tbody>
     </table>
-    <a href="./create.php">Tambah Produk</a>
+    <a href="./create.php">Tambah Produk</a><br>
+    <a href="./admin.php">Kembali</a>
 </body>
 </html>

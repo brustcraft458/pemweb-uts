@@ -18,6 +18,7 @@ if($_SESSION['role']  != 'admin') {
 </head>
 <body>
     <h1>selamat datang administrator:<?php echo $_SESSION['name'];?></h1>
+    <a href="./show.php">Lihat Produk</a><br>
     <a href="./backend/logout.php">Logout</a>
 </body>
 </html>
