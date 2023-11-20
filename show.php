@@ -1,3 +1,13 @@
+<?php
+if (isset($_GET)) {
+    if (isset($_GET['alert'])) {
+        $pesan = $_GET['alert'];
+        // echo("<script>alert('$pesan')</script>");
+        echo("alert: " . $pesan);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +35,7 @@
                 $no = 1;
 
                 while($row = mysqli_fetch_assoc($products)) {
+                    //print_r($row['id']);
             ?>
                 <tr>
                     <td><?=$no++;?></td>
@@ -33,14 +44,13 @@
                     <!-- <td><img src="<?=$row['image'];?>" width="100"></td> -->
                     <td><a href="<?=$row['image'];?>" target="_blank">unduh</a></td>
                     <td>
-                        <a href="edit.php?id=<?=$row['id'];?>">Edit</a>
-                        <a href="delete.php?id=<?=$row['id'];?>">Hapus</a>
-
+                        <a href="./edit.php?id=<?=$row['id'];?>">Edit</a>
+                        <a href="./backend/delete.php?id=<?=$row['id'];?>">Hapus</a>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-    
+    <a href="./create.php">Tambah Produk</a>
 </body>
 </html>

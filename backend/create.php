@@ -10,7 +10,17 @@ if(isset($_POST['submit'])) {
     $image = $_FILES['image']['name'];
     $tempImage = $_FILES['image']['tmp_name'];
 
-    $randomFilename = time().'-'.md5(rand()).'-'.$image;
+    mysqli_query($db_connect,"INSERT INTO products (name,price,image) VALUES ('$name','$price','/upload/comingsoon')");
+
+    if(mysqli_affected_rows($db_connect) > 0) {
+        $pesan = "Data Berhasil ditambahkan";
+    } else {
+        $pesan = "Data Gagal ditambahkan";
+    }
+    
+    header('Location: ./../show.php?alert="' . $pesan . '"');
+
+    /*$randomFilename = time().'-'.md5(rand()).'-'.$image;
 
     $uploadPath = $_SERVER['DOCUMENT_ROOT'].'/upload/'.$randomFilename;
 
@@ -22,6 +32,6 @@ if(isset($_POST['submit'])) {
         echo "berhasil upload";
     } else {
         echo "gagal upload";
-    }
+    }*/
 
 }
